@@ -1,6 +1,0 @@
-class Album < ActiveRecord::Base
-  attr_accessible :text_body, :title, :user_id
-  
-  has_many :pictures, :order => 'picture_attachment_file_name ASC'
-  accepts_nested_attributes_for :pictures, :allow_destroy => true
-end
