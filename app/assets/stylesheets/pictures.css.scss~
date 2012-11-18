@@ -1,0 +1,39 @@
+// Place all the styles related to the pictures controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+#picture_outer
+{
+ position:relative
+}
+
+#previous_picture
+{
+ padding: 10px;
+ float:left;
+}
+
+#center_picture
+{
+ padding: 10px;
+ float:left;
+}
+
+#next_picture
+{
+ padding: 10px;
+ float:left;
+}
+
+#edit_back_links
+{
+ clear:both;
+ width: 100%;
+ text-align: center;
+}
+
+#back_to_album
+{
+ clear:both;
+ width: 100%;
+ text-align: center;
+}

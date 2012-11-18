@@ -1,0 +1,58 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require_tree .
+ */
+#content_frame
+{
+
+}
+
+.error
+{
+  margin: 7px;
+  color: #f00;
+}
+
+.notice
+{
+  margin: 7px;
+  color: #090;
+}
+
+.navigation_link
+{
+  padding: 5px;
+}
+
+.box_shadow
+{
+  border: solid;
+  border-width: 1px;
+  border-color: #ddd;
+  -moz-box-shadow: 3px 3px 4px #777777;
+  -webkit-box-shadow: 3px 3px 4px #777777;
+  /* For IE 8 */
+  -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#777777')";
+  /* For IE 5.5 - 7 */
+  filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#777777');
+}
+#spacer_frame
+{
+  width: 1600px; 
+  margin: 75px;
+  padding: 30px;
+ 
+}
+#header
+{
+  padding: 7px;
+}

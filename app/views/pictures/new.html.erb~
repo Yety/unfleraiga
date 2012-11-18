@@ -1,0 +1,8 @@
+<h1>New picture</h1>
+
+<%= render 'form' %>
+<!-- Paperclip-Stuff -->
+<%= form_for @picture, :url => @picture_path, :html => { :multipart => true } do |form| %>
+  <%= form.file_field :picture_attachment %>
+<% end %>
+

@@ -1,0 +1,4 @@
+<% @files.each do |file| %>
+  <%= file.inspect %>
+<% end %>
+<%= link_to "&le;&le;", album_path(@album) %>

@@ -1,0 +1,57 @@
+<p id="notice"><%= notice %></p>
+
+<!--<p>
+  <b>Title:</b>
+  <%= @picture.title %>
+</p>
+
+<p>
+  <b>Text body:</b>
+  <%= @picture.text_body %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @picture.user_id %>
+</p>
+
+<p>
+  <b>Album:</b>
+  <%= @picture.album_id %>
+</p>
+
+<p>
+  <b>Inspect:</b>
+  <%= @picture.inspect %>
+</p>-->
+
+<div id="picture_outer">
+<div id="back_to_album"> <%= link_to "^^", album_path(@picture.album) %> </div>
+  <div id="previous_picture" class="box_shadow">
+    <% if @picture.previous %>
+      <%= link_to "<<", @picture.previous %> <br>
+      <%= link_to image_tag( @picture.previous.picture_attachment.url(:thumb)), picture_path(@picture.previous) %>
+    <% end %>
+  </div>
+  <div id="center_picture" class="box_shadow">
+    <% if @picture.next %>
+      <%= link_to image_tag( @picture.picture_attachment.url(:album)),  picture_path(@picture.next) %>
+    <% else %>
+      <%= image_tag( @picture.picture_attachment.url(:album)) %>
+    <% end %>
+  </div>
+  <div id="next_picture" class="box_shadow">
+    <% if @picture.next %>
+      <%= link_to ">>", @picture.next %>
+      <br>
+      <%= link_to image_tag( @picture.next.picture_attachment.url(:thumb)), picture_path(@picture.next) %>
+    <% end %>
+  </div>
+<!--<%= image_tag @picture.picture_attachment.url(:medium) %>
+<%= image_tag @picture.picture_attachment.url(:thumb) %>-->
+  <div id="edit_back_links">
+    <%= link_to '+', @picture.picture_attachment.url %>
+    <%= link_to 'Edit', edit_picture_path(@picture) %> 
+<!--    <%= link_to 'Back', pictures_path %>-->
+  </div>
+</div>
