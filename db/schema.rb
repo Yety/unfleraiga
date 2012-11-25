@@ -11,14 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121125092328) do
+ActiveRecord::Schema.define(:version => 20121125182600) do
 
   create_table "albums", :force => true do |t|
     t.string   "title"
     t.text     "text_body"
     t.integer  "user_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                                   :null => false
+    t.datetime "updated_at",                                   :null => false
+    t.boolean  "must_be_logged_in_to_view", :default => false
   end
 
   create_table "jobs", :force => true do |t|
@@ -33,12 +34,13 @@ ActiveRecord::Schema.define(:version => 20121125092328) do
     t.text     "text_body"
     t.integer  "user_id"
     t.integer  "album_id"
-    t.datetime "created_at",                      :null => false
-    t.datetime "updated_at",                      :null => false
+    t.datetime "created_at",                                         :null => false
+    t.datetime "updated_at",                                         :null => false
     t.string   "picture_attachment_file_name"
     t.string   "picture_attachment_content_type"
     t.integer  "picture_attachment_file_size"
     t.datetime "picture_attachment_updated_at"
+    t.boolean  "must_be_logged_in_to_view",       :default => false
   end
 
   create_table "posts", :force => true do |t|

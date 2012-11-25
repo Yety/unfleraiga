@@ -1,5 +1,5 @@
 class PicturesController < ApplicationController
-  load_and_authorize_resource 
+  load_and_authorize_resource
   skip_authorization_check :only => [:show, :index]
   # GET /pictures
   # GET /pictures.json
@@ -28,12 +28,12 @@ class PicturesController < ApplicationController
   def new
     @picture = Picture.new
     @redirect_back_to_album_id = nil
+    @picture.user = current_user
     if(params.has_key? :album_id)
       @album = Album.find(params[:album_id])
-      @picture.album_id = @album.id	
+      @picture.album_id = @album.id
       @redirect_back_to_album_id =  @picture.album_id
     end
-    
 
     respond_to do |format|
       format.html # new.html.erb
@@ -56,14 +56,14 @@ class PicturesController < ApplicationController
     saving_successful = @picture.save
     respond_to do |format|
       if saving_successful
-	if params.has_key? :redirect
-	  @album = Album.find(params[:redirect])
-	  format.html { redirect_to @album, notice: 'Picture was successfully updated.' }
-	  format.json { head :no_content }
-	elsif
-	  format.html { redirect_to @picture, notice: 'Picture was successfully created.' }
-	  format.json { render json: @picture, status: :created, location: @picture }
-	end
+        if params.has_key? :redirect
+          @album = Album.find(params[:redirect])
+          format.html { redirect_to @album, notice: 'Picture was successfully updated.' }
+          format.json { head :no_content }
+        elsif
+        format.html { redirect_to @picture, notice: 'Picture was successfully created.' }
+          format.json { render json: @picture, status: :created, location: @picture }
+        end
       else
         format.html { render action: "new" }
         format.json { render json: @picture.errors, status: :unprocessable_entity }
@@ -75,8 +75,7 @@ class PicturesController < ApplicationController
   # PUT /pictures/1.json
   def update
     @picture = Picture.find(params[:id])
-  
-    
+
     respond_to do |format|
       if @picture.update_attributes(params[:picture])
         format.html { redirect_to @picture, notice: 'Picture was successfully updated.' }
@@ -99,49 +98,50 @@ class PicturesController < ApplicationController
       format.json { head :no_content }
     end
   end
-  
+
   def import_from_folder
     @files = []
     unless params.has_key? :album_id
-	redirect_to albums_url, notice: "Bitte ein Album auswaehlen!"
-	return
+      redirect_to albums_url, notice: "Bitte ein Album auswaehlen!"
+    return
     end
     @album = Album.find params[:album_id]
-     unless @album
-	redirect_to albums_url, notice: "Album existiert nicht!"
-	return
+    unless @album
+      redirect_to albums_url, notice: "Album existiert nicht!"
+    return
     end
-    
+
     base_path_for_import = "c:/temp/picture_import"
 
     @files.concat Dir.glob(base_path_for_import + "/*.jpg")
     @files.concat Dir.glob(base_path_for_import + "/*.JPG")
     @files = @files.uniq
-    
+
     if not File.exists?(base_path_for_import + "/processed")
       Dir.mkdir(base_path_for_import + "/processed")
     end
-      
+
     @target_path = []
     @files.each do |file|
       new_picture = Picture.new
       new_picture.album_id =@album.id
+      new_picture.must_be_logged_in_to_view = @album.must_be_logged_in_to_view
       attachment_file = File.new(file)
-      new_picture.picture_attachment = attachment_file 
+      new_picture.picture_attachment = attachment_file
       new_picture.save
       attachment_file.close
       @target_path << base_path_for_import + "/processed/" + File.basename(file)
       File.rename(file, @target_path.last)
     end
-    
+
     respond_to do |format|
       if params.has_key? :redirect
         format.html { redirect_to @album, notice: 'Picture successfully imported.' }
-	format.json { head :no_content }
-     else
-	format.html
-	format.json { head :no_content }
-     end
+        format.json { head :no_content }
+      else
+        format.html
+        format.json { head :no_content }
+      end
     end
   end
 end

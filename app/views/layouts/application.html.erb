@@ -1,33 +1,38 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Railstest</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag 'jquery.min.js', 'jquery_ujs' %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+	<head>
+		<title>Railstest</title>
+		<%= stylesheet_link_tag    "application", :media => "all" %>
+		<%= javascript_include_tag 'jquery.min.js', 'jquery_ujs' %>
+		<%= csrf_meta_tags %>
+	</head>
+	<body>
 
-<div id="outer_frame">
-  <div id="spacer_frame" class="box_shadow">
-    <div id="header" class="box_shadow">
-      <%= render_navigation :renderer => :links %><br/>
-      <% if current_user %>
-       <%= current_user.name %> (<%= link_to "Sign Out", destroy_user_session_path, :method=>'delete' %>)
-      <% else %>
-	Nicht eingeloggt 
-      <% end %>
-    </div>
-    <% if flash[:error] -%>
-	<div class='error box_shadow'><%=h flash[:error] %></div>
-    <% end -%>
-    <% if flash[:notice] -%>
-      <div class='notice box_shadow'><%=h flash[:notice] %></div>
-    <% end -%>
-    <div id="content_frame">
-      <%= yield %>
-    </div>
-  </div>
-</div>
-</body>
+		<div id="outer_frame">
+			<div id="spacer_frame" class="box_shadow">
+				<div id="header" class="box_shadow">
+					<%= render_navigation :renderer => :links %>
+					<br/>
+					<% if current_user %>
+					<%= current_user.name %> (<%= link_to "Sign Out", destroy_user_session_path, :method=>'delete' %>)
+					<% else %>
+					<%= link_to "Login", new_user_session_path %>
+					<% end %>
+				</div>
+				<% if flash[:error] -%>
+				<div class='error box_shadow'>
+					<%= h flash[:error] %>
+				</div>
+				<% end -%>
+				<% if flash[:notice] -%>
+				<div class='notice box_shadow'>
+					<%= h flash[:notice] %>
+				</div>
+				<% end -%>
+				<div id="content_frame">
+					<%= yield %>
+				</div>
+			</div>
+		</div>
+	</body>
 </html>

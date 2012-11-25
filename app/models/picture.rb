@@ -1,7 +1,8 @@
 class Picture < ActiveRecord::Base
-  attr_accessible :album_id, :text_body, :title, :user_id, :picture_attachment
+  attr_accessible :album_id, :text_body, :title, :user_id, :picture_attachment, :must_be_logged_in_to_view
   
   belongs_to :album
+  belongs_to :user
   
   has_attached_file :picture_attachment, :styles => {:album => "1024x1024", :medium => "300x300>", :thumb => "100x100>" }
   
