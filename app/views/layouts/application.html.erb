@@ -11,7 +11,12 @@
 <div id="outer_frame">
   <div id="spacer_frame" class="box_shadow">
     <div id="header" class="box_shadow">
-      <%= render_navigation :renderer => :links %> <%= link_to "Sign Out", destroy_user_session_path %>
+      <%= render_navigation :renderer => :links %><br/>
+      <% if current_user %>
+       <%= current_user.name %> (<%= link_to "Sign Out", destroy_user_session_path, :method=>'delete' %>)
+      <% else %>
+	Nicht eingeloggt 
+      <% end %>
     </div>
     <% if flash[:error] -%>
 	<div class='error box_shadow'><%=h flash[:error] %></div>

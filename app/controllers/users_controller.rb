@@ -1,7 +1,9 @@
 class UsersController < ApplicationController
+  load_and_authorize_resource 
   # GET /users
   # GET /users.json
   before_filter :authenticate_user!
+  skip_authorization_check :only => [:show, :index, :sign_out]
   def index
     @users = User.all
 

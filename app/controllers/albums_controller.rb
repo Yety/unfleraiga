@@ -1,4 +1,6 @@
 class AlbumsController < ApplicationController
+    load_and_authorize_resource 
+  skip_authorization_check :only => [:show, :index]
   # GET /albums
   # GET /albums.json
   def index
