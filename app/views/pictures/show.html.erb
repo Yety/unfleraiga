@@ -50,8 +50,10 @@
 <!--<%= image_tag @picture.picture_attachment.url(:medium) %>
 <%= image_tag @picture.picture_attachment.url(:thumb) %>-->
   <div id="edit_back_links">
-    <%= link_to '+', @picture.picture_attachment.url %>
-    <%= link_to 'Edit', edit_picture_path(@picture) %> 
+    <%= link_to '+', @picture.picture_attachment.url, :target => "_blank" %>
+    <% if can? :edit, @picture %>
+      <%= link_to 'Edit', edit_picture_path(@picture) %> 
 <!--    <%= link_to 'Back', pictures_path %>-->
+    <% end %>
   </div>
 </div>

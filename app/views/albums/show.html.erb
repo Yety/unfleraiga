@@ -1,19 +1,17 @@
 <p id="notice"><%= notice %></p>
-
+<div id="back_to_album"> <%= link_to "^^", albums_path %> </div>
 <p>
-  <b>Title:</b>
-  <%= @album.title %>
+   <%= @album.title %>
 </p>
 
 <p>
-  <b>Text body:</b>
   <%= @album.text_body %>
 </p>
 
-<p>
+<!--<p>
   <b>User:</b>
   <%= @album.user_id %>
-</p>
+</p>-->
 
 <p>
   <% picture_counter = 0 

@@ -1,4 +1,4 @@
-<h1>Listing albums</h1>
+<!--<h1>Listing albums</h1>-->
 
 <table>
   
@@ -8,12 +8,16 @@
       <%= link_to image_tag(album.pictures.first.picture_attachment.url(:thumb)), album_path(album)  %><br/>
       <%= album.title %>
     </td>
-    <td>
-      <%= link_to 'Edit', edit_album_path(album) %>
-    </td>
-    <td>
-      <%= link_to 'Destroy', album, method: :delete, data: { confirm: 'Are you sure?' } %>
-    </td>
+    <% if can? :edit, album %>
+      <td>
+	<%= link_to 'Edit', edit_album_path(album) %>
+      </td>
+    <% end %>
+    <% if can? :destroy, album %>
+      <td>
+	<%= link_to 'Destroy', album, method: :delete, data: { confirm: 'Are you sure?' } %>
+      </td>
+    <% end %>
   </tr>
 <% end %>
 </table>
