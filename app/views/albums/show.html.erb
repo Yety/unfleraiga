@@ -7,7 +7,7 @@
   <%= @album.user_id %>
 </p>-->
 <div id= "album_block">
-  <% picture_counter = 0 
+  <% picture_counter = 0
      tr_open = false     %>
 	<table class = "box_shadow" id = "album_picture_list">
 	  <% @album.pictures.each do |picture| %>
@@ -18,6 +18,8 @@
 	      <td>
 		<div class="album_picture_grid_element box_shadow">
 		  <%= link_to image_tag( picture.picture_attachment.url(:medium)), picture_path(picture) %>
+          <br>
+          <%= picture.title %>
 		</div>
 	      </td>
 	    <% if picture_counter.divmod(3)[1] == 2 %>
@@ -40,9 +42,9 @@
     </p>
   </div>
 <%= link_to "New Picture", new_picture_path(:album_id => @album.id) %>
-<%= link_to 'Import', :action=>"import_from_folder", :controller=>"pictures", :album_id => @album.id %> 
+<%= link_to 'Import', :action=>"import_from_folder", :controller=>"pictures", :album_id => @album.id %>
 
-<%= link_to 'Edit', edit_album_path(@album) %> 
+<%= link_to 'Edit', edit_album_path(@album) %>
 <%= link_to 'Back', albums_path %>
 
 </div>
