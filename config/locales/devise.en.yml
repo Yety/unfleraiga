@@ -56,3 +56,5 @@ en:
         subject: 'Reset password instructions'
       unlock_instructions:
         subject: 'Unlock Instructions'
+  application:
+    are_you_sure: "Are you sure?"

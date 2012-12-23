@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.all
+    @posts = Post.order("created_at DESC")
 
     respond_to do |format|
       format.html # index.html.erb
@@ -27,7 +27,7 @@ class PostsController < ApplicationController
   # GET /posts/new.json
   def new
     @post = Post.new
-
+    @post.user = current_user
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @post }

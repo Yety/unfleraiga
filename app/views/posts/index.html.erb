@@ -1,29 +1,27 @@
 <h1>Listing posts</h1>
 
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Body</th>
-    <th>Published</th>
-    <th>User</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
 <% @posts.each do |post| %>
-  <tr>
-    <td><%= post.title %></td>
-    <td><%= post.body %></td>
-    <td><%= post.published %></td>
-    <td><%= post.user_id %></td>
-    <td><%= link_to 'Show', post %></td>
-    <td><%= link_to 'Edit', edit_post_path(post) %></td>
-    <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
 
-<br />
+<div class="post_on_index box_shadow">
+  <%= link_to post.title, post_path(post) %>
+  <p>
+    <%= truncate(post.body, :length=>1000) %>
+    <%= if post.body.length > 1000
+            link_to "More...", post
+        end %>
+  </p>
+  <p> Author: <%= post.user.name %></p>
+  <% if can? :edit, post %>
+      <br>
+      <%= link_to 'Edit', edit_post_path(post) %>
+  <% end %>
+  <% if can? :destroy, post %>
+      <br>
+      <%= link_to 'Destroy', post, method: :delete, data: {confirm: t('application.are_you_sure')} %>
+  <% end %></div>
+<% end %>
+
+
+<br/>
 
 <%= link_to 'New Post', new_post_path %>
