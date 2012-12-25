@@ -1,3 +1,4 @@
+source :rubygems
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.8'
@@ -7,7 +8,6 @@ gem 'rails', '3.2.8'
 
 gem 'sqlite3'
 gem 'execjs'
-gem 'therubyracer'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -16,7 +16,7 @@ group :assets do
   gem 'coffee-rails'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  # gem 'therubyracer', :platforms => :ruby
+  gem 'therubyracer', :platforms => :ruby  # It's supposed to be used under linux only
 
   gem 'uglifier', '>= 1.0.3'
 end
@@ -27,6 +27,7 @@ gem "paperclip", "~> 3.0"
 gem "simple-navigation"
 gem 'devise'
 gem 'cancan'
+gem 'exifr'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

@@ -9,7 +9,7 @@ class Ability
         can :manage, :all
     else
         can :read, Album, :must_be_logged_in_to_view => false
-        can :read, Picture, :must_be_logged_in_to_view => false
+        can :read, Picture, :must_be_logged_in_to_view => false, :album => {:must_be_logged_in_to_view => false}
         can :read, Post
         can :read, User
     end

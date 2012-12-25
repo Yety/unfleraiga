@@ -13,18 +13,22 @@
 
 <% @pictures.each do |picture| %>
   <tr>
-    <td><%= picture.title %></td>
+    <td><%= link_to picture.title, picture %></td>
     <td><%= picture.text_body %></td>
     <td><%= picture.user_id %></td>
-    <td><%= picture.album_id %></td>
+    <td><%= link_to picture.album.title, picture.album %></td>
     <td><%= image_tag picture.picture_attachment.url(:thumb)%></td>
-    <td><%= link_to 'Show', picture %></td>
+    <% if can? :edit, picture %>
     <td><%= link_to 'Edit', edit_picture_path(picture) %></td>
+    <% end %>
+    <%  if can? :edit, picture %>
     <td><%= link_to 'Destroy', picture, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <% end %>
   </tr>
 <% end %>
 </table>
 
 <br />
-
+<% if can? :create, Picture %>
 <%= link_to 'New Picture', new_picture_path %>
+<% end %>

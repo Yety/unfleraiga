@@ -13,4 +13,8 @@ class Picture < ActiveRecord::Base
   def previous
     album.pictures.where("id < ?", id).last
   end
+
+  def exif_data
+    return EXIFR::JPEG.new(picture_attachment.path)
+  end
 end

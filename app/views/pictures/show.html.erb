@@ -26,40 +26,52 @@
 </p>-->
 
 <div id="picture_outer">
-<div id="back_to_album"> <%= link_to "^^", album_path(@picture.album) %> </div>
+  <div id="back_to_album"> <%= link_to "^^", album_path(@picture.album) %> </div>
   <div id="previous_picture" class="box_shadow">
     <% if @picture.previous %>
-      <%= link_to "<<", @picture.previous %> <br>
-      <%= link_to image_tag( @picture.previous.picture_attachment.url(:thumb)), picture_path(@picture.previous) %>
-      <br>
-      <%= @picture.previous.title %>
+        <%= link_to "<<", @picture.previous %> <br>
+        <%= link_to image_tag(@picture.previous.picture_attachment.url(:thumb)), picture_path(@picture.previous) %>
+        <br>
+        <%= @picture.previous.title %>
     <% end %>
   </div>
   <div id="center_picture" class="box_shadow">
     <%= @picture.title %> <br>
     <% if @picture.next %>
-      <%= link_to image_tag( @picture.picture_attachment.url(:album)),  picture_path(@picture.next) %>
+        <%= link_to image_tag(@picture.picture_attachment.url(:album)), picture_path(@picture.next) %>
     <% else %>
-      <%= image_tag( @picture.picture_attachment.url(:album)) %>
+        <%= image_tag(@picture.picture_attachment.url(:album)) %>
     <% end %>
+    <br>
+    <a href="#" onclick="return false;" id="exif_info_switch">
+      -> Info
+    </a>
 
+    <div id="picture_exif_info">
+      Focal length: <%= @picture.exif_data.focal_length.to_s %>
+      <br>
+      Aperture: <%= @picture.exif_data.aperture_value.to_s %>
+      <br>
+      Exposure: <%= @picture.exif_data.exposure_time.to_s %>
+      <br>
+    </div>
   </div>
   <div id="next_picture" class="box_shadow">
     <% if @picture.next %>
-      <%= link_to ">>", @picture.next %>
-      <br>
-      <%= link_to image_tag( @picture.next.picture_attachment.url(:thumb)), picture_path(@picture.next) %>
-      <br>
-      <%= @picture.next.title %>
+        <%= link_to ">>", @picture.next %>
+        <br>
+        <%= link_to image_tag(@picture.next.picture_attachment.url(:thumb)), picture_path(@picture.next) %>
+        <br>
+        <%= @picture.next.title %>
     <% end %>
   </div>
-<!--<%= image_tag @picture.picture_attachment.url(:medium) %>
+  <!--<%= image_tag @picture.picture_attachment.url(:medium) %>
 <%= image_tag @picture.picture_attachment.url(:thumb) %>-->
   <div id="edit_back_links">
     <%= link_to '+', @picture.picture_attachment.url, :target => "_blank" %>
     <% if can? :edit, @picture %>
-      <%= link_to 'Edit', edit_picture_path(@picture) %> 
-<!--    <%= link_to 'Back', pictures_path %>-->
+        <%= link_to 'Edit', edit_picture_path(@picture) %>
+        <!--    <%= link_to 'Back', pictures_path %>-->
     <% end %>
   </div>
 </div>

@@ -1,10 +1,10 @@
 class PicturesController < ApplicationController
   load_and_authorize_resource
-  skip_authorization_check :only => [:show, :index]
+  #skip_authorization_check :only => [:show, :index]
   # GET /pictures
   # GET /pictures.json
   def index
-    @pictures = Picture.all
+    #@pictures = Picture.all
 
     respond_to do |format|
       format.html # index.html.erb
