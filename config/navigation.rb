@@ -32,6 +32,7 @@ SimpleNavigation::Configuration.run do |navigation|
 
   # Define the primary navigation
   navigation.items do |primary|
+    primary.dom_id = "navigation_dom_id"
     primary.item :posts, "Posts", posts_path, :class => 'navigation_link'
     primary.item :albums, "Albums", albums_path, :class => 'navigation_link'
     primary.item :pictures, "Pictures", pictures_path, :class => 'navigation_link'

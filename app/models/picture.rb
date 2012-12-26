@@ -4,7 +4,7 @@ class Picture < ActiveRecord::Base
   belongs_to :album
   belongs_to :user
   
-  has_attached_file :picture_attachment, :styles => {:album => "1024x1024", :medium => "300x300>", :thumb => "100x100>" }
+  has_attached_file :picture_attachment, :styles => {:album => "800x800", :medium => "300x300>", :thumb => "100x100>" }
   
   def next
     album.pictures.where("id > ?", id).first

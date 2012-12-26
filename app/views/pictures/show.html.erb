@@ -27,14 +27,7 @@
 
 <div id="picture_outer">
   <div id="back_to_album"> <%= link_to "^^", album_path(@picture.album) %> </div>
-  <div id="previous_picture" class="box_shadow">
-    <% if @picture.previous %>
-        <%= link_to "<<", @picture.previous %> <br>
-        <%= link_to image_tag(@picture.previous.picture_attachment.url(:thumb)), picture_path(@picture.previous) %>
-        <br>
-        <%= @picture.previous.title %>
-    <% end %>
-  </div>
+
   <div id="center_picture" class="box_shadow">
     <%= @picture.title %> <br>
     <% if @picture.next %>
@@ -63,6 +56,14 @@
         <%= link_to image_tag(@picture.next.picture_attachment.url(:thumb)), picture_path(@picture.next) %>
         <br>
         <%= @picture.next.title %>
+    <% end %>
+  </div>
+  <div id="previous_picture" class="box_shadow">
+    <% if @picture.previous %>
+        <%= link_to "<<", @picture.previous %> <br>
+        <%= link_to image_tag(@picture.previous.picture_attachment.url(:thumb)), picture_path(@picture.previous) %>
+        <br>
+        <%= @picture.previous.title %>
     <% end %>
   </div>
   <!--<%= image_tag @picture.picture_attachment.url(:medium) %>

@@ -1,25 +1,19 @@
 <p id="notice"><%= notice %></p>
-
+<div class="box_shadow">
 <p>
-  <b>Title:</b>
   <%= @post.title %>
 </p>
-
+</div>
+<div class="box_shadow">
 <p>
-  <b>Body:</b>
   <%= @post.body %>
 </p>
 
 <p>
-  <b>Published:</b>
-  <%= @post.published %>
+  <b>Author:</b>
+  <%= @post.user.name %>
 </p>
-
-<p>
-  <b>User:</b>
-  <%= @post.user_id %>
-</p>
-
+</div>
 
 <%= link_to 'Edit', edit_post_path(@post) %> |
 <%= link_to 'Back', posts_path %>

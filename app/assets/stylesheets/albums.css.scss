@@ -14,12 +14,15 @@
   margin: 7px;
   padding: 7px;
 }
-#album_block
-{
-  
-}
+
 #album_picture_list
 {
+  display: inline-block;
+}
+#album_picture_list_header
+{
+  text-align: center;
+
 }
 #album_details
 {

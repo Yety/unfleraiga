@@ -11,48 +11,129 @@
  *= require_self
  *= require_tree .
  */
+body
+{
+    background-color: #09242B;
+    font-size: 13px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #fff;
+    text-shadow: 0 1px 0 #333;
+}
+
+p, ol, ul, td
+{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    line-height: 18px;
+}
+
+a
+{
+    color: #000;
+    &:visited
+    {
+        color: #000;
+    }
+
+    &:hover
+    {
+        color: #000;
+}
+}
+
+#outer_frame
+{
+    color: #fff;
+    text-shadow: 0 1px 0 #444;
+    background-color: rgba(30, 103, 126, 0.73);
+    padding: 65px;
+    width: 1000px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 5px;
+}
+
 #content_frame
 {
+    float: none;
+}
 
+#header
+{
+    color:  #444;
+    display: inline-block;
+}
+
+#navigation_dom_id
+{
+    float: left;
 }
 
 .error
 {
-  margin: 7px;
-  color: #f00;
+    margin: 7px;
+    color: #f00;
 }
 
 .notice
 {
-  margin: 7px;
-  color: #090;
+    margin: 7px;
+    color: #090;
 }
 
 .navigation_link
 {
-  padding: 5px;
+    padding: 5px;
 }
 
-.box_shadow
+/*.box_shadow
 {
   border: solid;
   border-width: 1px;
   border-color: #ddd;
   -moz-box-shadow: 3px 3px 4px #777777;
   -webkit-box-shadow: 3px 3px 4px #777777;
-  /* For IE 8 */
+  *//* For IE 8 *//*
   -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#777777')";
-  /* For IE 5.5 - 7 */
+  *//* For IE 5.5 - 7 *//*
   filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#777777');
-}
-#spacer_frame
+}*/
+.box_shadow
 {
-  width: 1600px; 
-  margin: 75px;
-  padding: 30px;
- 
+    color: #444;
+    text-shadow: 0 1px 0 #fff;
+    font-weight: bold;
+    background: #206e86;
+    background: -moz-linear-gradient(top, #eceff3 0%, #c1cad5 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #eceff3), color-stop(100%, #c1cad5));
+    background: -webkit-linear-gradient(top, #eceff3 0%, #c1cad5 100%);
+    background: -o-linear-gradient(top, #eceff3 0%, #c1cad5 100%);
+    background: -ms-linear-gradient(top, #eceff3 0%, #c1cad5 100%);
+    background: linear-gradient(top, #eceff3 0%, #c1cad5 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr = '#eceff3', endColorstr = '#c1cad5', GradientType = 0);
+
+    /*padding: 10px 10px 9px 10px;*/
+    /*margin-top:15px;
+    margin-bottom:-4px;*/
+    border-top: 1px solid white;
+    border-left: 1px solid white;
+    border-right: 1px solid white;
+    /*cursor:pointer;*/
+    -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 1);
+    -moz-box-shadow: 0 1px 1px rgba(0, 0, 0, 1);
+    -ms-box-shadow: 0 1px 1px rgba(0, 0, 0, 1);
+    -o-box-shadow: 0 1px 1px rgba(0, 0, 0, 1);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 1);
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    border-radius: 5px;
 }
+
 #header
 {
-  padding: 7px;
+    padding: 7px;
 }
