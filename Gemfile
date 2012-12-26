@@ -17,7 +17,7 @@ group :assets do
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   gem 'therubyracer', :platforms => :ruby  # It's supposed to be used under linux only
-
+  gem 'libv8', '~> 3.11.8', :platforms => :ruby # needed for therubyracer
   gem 'uglifier', '>= 1.0.3'
 end
 
