@@ -3,9 +3,8 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   before_filter :authenticate_user!
-  skip_authorization_check :only => [:show, :index, :sign_out]
+  skip_authorization_check :only => [:sign_out]
   def index
-    @users = User.all
 
     respond_to do |format|
       format.html # index.html.erb

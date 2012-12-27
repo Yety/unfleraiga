@@ -11,7 +11,7 @@ class Ability
         can :read, Album, :must_be_logged_in_to_view => false
         can :read, Picture, :must_be_logged_in_to_view => false, :album => {:must_be_logged_in_to_view => false}
         can :read, Post
-        can :read, User
+        can :read, User, :id => user.id
     end
     #
     # The first argument to `can` is the action you are giving the user permission to do.
