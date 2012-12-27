@@ -176,3 +176,5 @@ pip-log.txt
 *~
 
 /public/system/pictures/
+
+Gemfile.lock
