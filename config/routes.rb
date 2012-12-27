@@ -13,6 +13,9 @@ Railstest::Application.routes.draw do
   resources :jobs, :cows
 
   match 'import_from_folder' => 'pictures#import_from_folder'
+
+  # Authentication using google
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
