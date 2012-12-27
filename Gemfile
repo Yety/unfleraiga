@@ -1,4 +1,3 @@
-source :rubygems
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.8'
@@ -28,6 +27,8 @@ gem "simple-navigation"
 gem 'devise'
 gem 'cancan'
 gem 'exifr'
+
+gem 'omniauth-google-oauth2'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
