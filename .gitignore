@@ -178,3 +178,6 @@ pip-log.txt
 /public/system/pictures/
 
 Gemfile.lock
+
+.idea/*
+.sass-cache/*
