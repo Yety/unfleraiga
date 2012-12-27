@@ -1,5 +1,4 @@
-<h2>Sign in</h2>
-
+<div id="sign_in" class="box_shadow">
 <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
   <div><%= f.label :email %><br />
   <%= f.email_field :email %></div>
@@ -14,4 +13,6 @@
   <div><%= f.submit "Sign in" %></div>
 <% end %>
 
-<%= render "devise/shared/links" %>
+
+  <%= render "devise/shared/links" %>
+</div>

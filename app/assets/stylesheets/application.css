@@ -66,6 +66,12 @@ a
     display: inline-block;
 }
 
+#login_logoff
+{
+    padding: 5px;
+    color:  #444;
+    display: inline-block;
+}
 #navigation_dom_id
 {
     float: left;

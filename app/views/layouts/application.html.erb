@@ -10,13 +10,8 @@
 
 <div id="outer_frame">
   <div id="header" class="box_shadow">
-
     <%= render_navigation :renderer => :links %>
-    <% if current_user %>
-        <%= current_user.name %> (<%= link_to "Sign Out", destroy_user_session_path, :method => 'delete' %>)
-    <% else %>
-        <%= link_to "Login", new_user_session_path %> or <%= link_to "Sign in with Google", user_omniauth_authorize_path(:google_oauth2) %>
-    <% end %>
+
   </div>
   <% if flash[:error] -%>
       <div class='error box_shadow'>
@@ -30,6 +25,16 @@
   <% end -%>
   <div id="content_frame">
     <%= yield %>
+  </div>
+
+  <% if ((@current_controller != "sessions") and (@current_action != "new"))%>
+  <div id="login_logoff" class="box_shadow">
+    <% if current_user %>
+        <%= current_user.name %> (<%= link_to "Sign Out", destroy_user_session_path, :method => 'delete' %>)
+    <% else %>
+        <%= link_to "Login", new_user_session_path %> or <%= link_to "Sign in with Google", user_omniauth_authorize_path(:google_oauth2) %>
+    <% end %>
+    <% end  %>
   </div>
 </div>
 </body>
