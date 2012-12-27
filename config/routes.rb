@@ -1,7 +1,10 @@
 Railstest::Application.routes.draw do
-  devise_for :users do
-    get "/users/sign_out" => "devise/sessions#destroy", :as => :destroy_user_session
-  end
+#  devise_for :users do
+#    get "/users/sign_out" => "devise/sessions#destroy", :as => :destroy_user_session
+#    :omniauth_callbacks => "users/omniauth_callbacks"
+#  end
+  # Authentication using google
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   resources :users
 
   resources :albums
@@ -14,8 +17,7 @@ Railstest::Application.routes.draw do
 
   match 'import_from_folder' => 'pictures#import_from_folder'
 
-  # Authentication using google
-  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

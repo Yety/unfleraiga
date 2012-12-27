@@ -176,7 +176,7 @@ pip-log.txt
 *~
 
 /public/system/pictures/
-
+config/google_api_credentials.rb
 Gemfile.lock
 
 .idea/*
