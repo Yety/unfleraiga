@@ -7,11 +7,21 @@ class Ability
     user ||= User.new # guest user (not logged in)
     if user.admin?
         can :manage, :all
-    else
-        can :read, Album, :must_be_logged_in_to_view => false
-        can :read, Picture, :must_be_logged_in_to_view => false, :album => {:must_be_logged_in_to_view => false}
+    elsif (!user.can_view_hidden_things)
+        can :read, Album, :hidden => false
+        can :read, Picture, :hidden => false,
+                   :album => {:hidden => false}
         can :read, Post
         can :read, User, :id => user.id
+        can :create, Album
+        can :create, Picture
+    else
+      can :read, Album, :hidden => false
+      can :read, Picture
+      can :create, Album
+      can :create, Picture
+
+      can :read, User, :id => user.id
     end
     #
     # The first argument to `can` is the action you are giving the user permission to do.

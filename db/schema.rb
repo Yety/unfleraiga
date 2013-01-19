@@ -11,15 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121228081344) do
+ActiveRecord::Schema.define(:version => 20130105140351) do
 
   create_table "albums", :force => true do |t|
     t.string   "title"
     t.text     "text_body"
     t.integer  "user_id"
-    t.datetime "created_at",                                   :null => false
-    t.datetime "updated_at",                                   :null => false
-    t.boolean  "must_be_logged_in_to_view", :default => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+    t.boolean  "hidden",     :default => false
   end
 
   create_table "jobs", :force => true do |t|
@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(:version => 20121228081344) do
     t.string   "picture_attachment_content_type"
     t.integer  "picture_attachment_file_size"
     t.datetime "picture_attachment_updated_at"
-    t.boolean  "must_be_logged_in_to_view",       :default => false
+    t.boolean  "hidden",                          :default => false
   end
 
   create_table "posts", :force => true do |t|
@@ -74,6 +74,7 @@ ActiveRecord::Schema.define(:version => 20121228081344) do
     t.boolean  "admin",                  :default => false
     t.string   "authenticated_by",       :default => "local"
     t.string   "picture_url"
+    t.boolean  "can_view_hidden_things", :default => false
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

@@ -1,5 +1,5 @@
 class Picture < ActiveRecord::Base
-  attr_accessible :album_id, :text_body, :title, :user_id, :picture_attachment, :must_be_logged_in_to_view
+  attr_accessible :album_id, :text_body, :title, :user_id, :picture_attachment, :hidden
   
   belongs_to :album
   belongs_to :user
